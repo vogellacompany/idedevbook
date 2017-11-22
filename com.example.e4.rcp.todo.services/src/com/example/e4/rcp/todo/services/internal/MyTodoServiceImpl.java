@@ -10,28 +10,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+
 import org.eclipse.e4.core.services.events.IEventBroker;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 
 import com.example.e4.rcp.todo.events.MyEventConstants;
 import com.example.e4.rcp.todo.model.ITodoService;
 import com.example.e4.rcp.todo.model.Todo;
 
-@Component
-public class TodoServiceImpl implements ITodoService {
+public class MyTodoServiceImpl implements ITodoService {
 
 	private static AtomicInteger current = new AtomicInteger(1);
 	private List<Todo> todos;
-	private IEventBroker eventBroker;
 
-	public TodoServiceImpl() {
+	// use dependency injection in MyTodoServiceImpl
+	@Inject
+	private IEventBroker broker;
+
+	public MyTodoServiceImpl() {
 		todos = createInitialModel();
-	}
-
-	@Reference
-	public void bindEventBroker(IEventBroker eventBroker) {
-		this.eventBroker = eventBroker;
 	}
 
 	@Override
@@ -58,11 +55,11 @@ public class TodoServiceImpl implements ITodoService {
 
 		// send out events
 		if (todoOptional.isPresent()) {
-			eventBroker.post(MyEventConstants.TOPIC_TODO_UPDATE,
+			broker.post(MyEventConstants.TOPIC_TODO_UPDATE,
 					createEventData(MyEventConstants.TOPIC_TODO_UPDATE, String.valueOf(todo.getId())));
 		} else {
 			todos.add(todo);
-			eventBroker.post(MyEventConstants.TOPIC_TODO_NEW,
+			broker.post(MyEventConstants.TOPIC_TODO_NEW,
 					createEventData(MyEventConstants.TOPIC_TODO_NEW, String.valueOf(todo.getId())));
 		}
 		return true;
@@ -79,9 +76,9 @@ public class TodoServiceImpl implements ITodoService {
 
 		deleteTodo.ifPresent(todo -> {
 			todos.remove(todo);
-
+			
 			// configure the event
-			eventBroker.post(MyEventConstants.TOPIC_TODO_DELETE,
+			broker.post(MyEventConstants.TOPIC_TODO_DELETE,
 					createEventData(MyEventConstants.TOPIC_TODO_DELETE, String.valueOf(todo.getId())));
 		});
 

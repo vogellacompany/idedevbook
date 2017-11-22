@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.example.e4.rcp.todo.services.internal.TodoServiceImpl">
-   <service>
-      <provide interface="com.example.e4.rcp.todo.model.ITodoService"/>
-   </service>
-   <reference bind="bindEventBroker" interface="org.eclipse.e4.core.services.events.IEventBroker" name="EventBroker"/>
-   <implementation class="com.example.e4.rcp.todo.services.internal.TodoServiceImpl"/>
-</scr:component>
