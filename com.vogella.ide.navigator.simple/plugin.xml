@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.vogella.ide.navigator.simple.view.CustomNavigator"
+            id="com.vogella.eclipse.ide.navigator.view"
+            name="Custom navigator"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+      point="org.eclipse.ui.navigator.viewer">
+   <viewerContentBinding
+         viewerId="com.vogella.eclipse.ide.navigator.view">
+      <includes>
+         <contentExtension
+               isRoot="false"
+               pattern="com.vogella.eclipse.ide.navigator.virtualcontent">
+         </contentExtension>
+      </includes>
+   </viewerContentBinding>
+</extension>
+   <extension
+      point="org.eclipse.ui.navigator.navigatorContent">
+   <navigatorContent
+         activeByDefault="true"
+         contentProvider="com.vogella.ide.navigator.simple.view.CNFContentProvider"
+         id="com.vogella.eclipse.ide.navigator.virtualcontent"
+         labelProvider="com.vogella.ide.navigator.simple.view.CNFLabelProvider"
+         name="Virtual content"
+         priority="normal">
+<triggerPoints>
+   <or>
+      <instanceof value="com.vogella.ide.navigator.simple.model.FakeInitialInput" />
+      <instanceof value="com.vogella.ide.navigator.simple.model.FakeInitialInput" />
+   </or>
+</triggerPoints>
+     <possibleChildren>
+   <or>
+      <instanceof value="com.vogella.ide.navigator.simple.model.Parent" />
+      <instanceof value="com.vogella.ide.navigator.simple.model.Child" />
+   </or>
+</possibleChildren>
+     <actionProvider
+           class="com.vogella.ide.navigator.simple.actions.MyActionProvider">
+     </actionProvider>
+   </navigatorContent>
+</extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.vogella.ide.navigator.simple.actions.OpenEditorHandler"
+            id="com.vogella.eclipse.ide.navigator.command2"
+            name="Open an editor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.vogella.eclipse.ide.navigator.view">
+         <command
+               commandId="com.vogella.eclipse.ide.navigator.command2"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
