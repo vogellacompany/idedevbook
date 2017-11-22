@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.example.e4.rcp.todo.services.internal.TagServiceImpl">
+   <service>
+      <provide interface="com.example.e4.rcp.todo.model.TagService"/>
+   </service>
+   <reference bind="setITodoService" interface="com.example.e4.rcp.todo.model.ITodoService" name="ITodoService"/>
+   <implementation class="com.example.e4.rcp.todo.services.internal.TagServiceImpl"/>
+</scr:component>
