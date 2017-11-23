@@ -37,17 +37,17 @@ public class TagServiceImpl implements TagService<Todo> {
 	public List<Tag<Todo>> getAllTags(CompositeTag<Todo> parentTag) {
 		List<Tag<Todo>> allTags = new ArrayList<>();
 
-		getAllTags(parentTag, allTags);
+		collectAllTags(parentTag, allTags);
 
 		return allTags;
 	}
 
 	@SuppressWarnings("unchecked")
-	private void getAllTags(CompositeTag<Todo> parentTag, List<Tag<Todo>> allTags) {
+	private void collectAllTags(CompositeTag<Todo> parentTag, List<Tag<Todo>> allTags) {
 		List<Tag<Todo>> tags = parentTag.getTags();
 		allTags.addAll(tags);
 		tags.stream().filter(CompositeTag.class::isInstance).map(CompositeTag.class::cast)
-				.forEach(cTag -> getAllTags(cTag, allTags));
+				.forEach(cTag -> collectAllTags(cTag, allTags));
 	}
 
 	@Override
