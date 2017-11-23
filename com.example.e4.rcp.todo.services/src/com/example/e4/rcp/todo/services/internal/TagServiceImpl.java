@@ -2,69 +2,57 @@ package com.example.e4.rcp.todo.services.internal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import com.example.e4.rcp.todo.model.CompositeTag;
 import com.example.e4.rcp.todo.model.ITodoService;
 import com.example.e4.rcp.todo.model.Tag;
 import com.example.e4.rcp.todo.model.TagService;
 import com.example.e4.rcp.todo.model.Todo;
 
 @Component
-public class TagServiceImpl implements TagService {
+public class TagServiceImpl implements TagService<Todo> {
 
-	private Tag<Tag<Todo>> rootTag;
-	private ITodoService todoService;
+	private CompositeTag<Todo> rootTag;
 
+	public TagServiceImpl() {
+		rootTag = new CompositeTag<>("root");
+	}
 
 	@Reference
 	public void setITodoService(ITodoService todoService) {
-		this.todoService = todoService;
-		List<Todo> todos = new ArrayList<>();
-		todoService.getTodos(todos::addAll);
-		createRootTag(todos);
+		Tag<Todo> eclipseTag = new Tag<>("Eclipse");
+		todoService.getTodos(eclipseTag::addAllTaggedElement);
+		rootTag.addTag(eclipseTag);
 	}
 
 	@Override
-	public List<Tag<Todo>> getTags(long id) {
-		List<Tag<Todo>> tags = new ArrayList<>();
-
-		Optional<Todo> findById = findById(id);
-		findById.ifPresent(todo -> findTags(todo, tags, getRootTag()));
-
-		return tags;
-	}
-
-	private void findTags(Todo todo, List<Tag<Todo>> todosTags, Tag<?> rootTag) {
-		List<?> taggedElements = rootTag.getTaggedElements();
-		for (Object taggedElement : taggedElements) {
-			if (taggedElement instanceof Tag) {
-				findTags(todo, todosTags, (Tag<?>) taggedElement);
-			} else if (todo.equals(taggedElement)) {
-				@SuppressWarnings("unchecked")
-				Tag<Todo> foundTag = (Tag<Todo>) rootTag;
-				todosTags.add(foundTag);
-			}
-		}
+	public List<Tag<Todo>> getAllTagsFromRoot() {
+		return getAllTags(getRootTag());
 	}
 
 	@Override
-	public Tag<Tag<Todo>> getRootTag() {
+	public List<Tag<Todo>> getAllTags(CompositeTag<Todo> parentTag) {
+		List<Tag<Todo>> allTags = new ArrayList<>();
+
+		getAllTags(parentTag, allTags);
+
+		return allTags;
+	}
+
+	@SuppressWarnings("unchecked")
+	private void getAllTags(CompositeTag<Todo> parentTag, List<Tag<Todo>> allTags) {
+		List<Tag<Todo>> tags = parentTag.getTags();
+		allTags.addAll(tags);
+		tags.stream().filter(CompositeTag.class::isInstance).map(CompositeTag.class::cast)
+				.forEach(cTag -> getAllTags(cTag, allTags));
+	}
+
+	@Override
+	public CompositeTag<Todo> getRootTag() {
 		return rootTag;
 	}
 
-	private Optional<Todo> findById(long id) {
-		List<Todo> todos = new ArrayList<>();
-		todoService.getTodos(todos::addAll);
-		return todos.stream().filter(t -> t.getId() == id).findAny();
-	}
-
-	private void createRootTag(List<Todo> todos) {
-		Tag<Todo> eclipseTag = new Tag<>("Eclipse", todos);
-		List<Tag<Todo>> tagList = new ArrayList<>();
-		tagList.add(eclipseTag);
-		rootTag = new Tag<>("root", tagList);
-	}
 }

@@ -1,5 +1,7 @@
 package com.example.e4.rcp.todo.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Tag<T> {
@@ -12,11 +14,11 @@ public class Tag<T> {
 
 	private List<T> taggedElements;
 
-	public Tag(String label, List<T> taggedElements) {
+	public Tag(String label) {
 		this.label = label;
-		this.taggedElements = taggedElements;
+		taggedElements = new ArrayList<>();
 	}
-	
+
 	public String getLabel() {
 		return label;
 	}
@@ -29,7 +31,20 @@ public class Tag<T> {
 		taggedElements.add(element);
 	}
 
+	public void addAllTaggedElement(Collection<T> element) {
+		taggedElements.addAll(element);
+	}
+
 	public void removeTaggedElement(T element) {
 		taggedElements.remove(element);
+	}
+
+	public void removeAllTaggedElement(Collection<T> element) {
+		taggedElements.removeAll(element);
+	}
+	
+	@Override
+	public String toString() {
+		return "[Tag] " + getLabel();
 	}
 }
