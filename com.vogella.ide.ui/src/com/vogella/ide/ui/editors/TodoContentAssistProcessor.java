@@ -1,4 +1,4 @@
-package com.vogella.ide.ui;
+package com.vogella.ide.ui.editors;
 
 import java.util.ArrayList;
 import java.util.List;

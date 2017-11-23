@@ -30,14 +30,14 @@
    <extension
          point="org.eclipse.ui.genericeditor.contentAssistProcessors">
       <contentAssistProcessor
-            class="com.vogella.ide.ui.TodoContentAssistProcessor"
+            class="com.vogella.ide.ui.editors.TodoContentAssistProcessor"
             contentType="com.vogella.ide.ui.todo">
       </contentAssistProcessor>
    </extension>
    <extension
          point="org.eclipse.ui.genericeditor.presentationReconcilers">
       <presentationReconciler
-            class="com.vogella.ide.ui.PropertiesReconciler"
+            class="com.vogella.ide.ui.editors.PropertiesReconciler"
             contentType="com.vogella.ide.ui.todo">
       </presentationReconciler>
    </extension>

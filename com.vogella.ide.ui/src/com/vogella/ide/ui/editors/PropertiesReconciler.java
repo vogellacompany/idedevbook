@@ -1,4 +1,4 @@
-package com.vogella.ide.ui;
+package com.vogella.ide.ui.editors;
 
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.TextAttribute;
@@ -10,8 +10,6 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-
-import com.vogella.ide.ui.editors.PropertyNameRule;
 
 public class PropertiesReconciler extends PresentationReconciler implements IPresentationReconciler {
 
