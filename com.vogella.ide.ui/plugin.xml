@@ -33,6 +33,10 @@
             class="com.vogella.ide.ui.editors.TodoContentAssistProcessor"
             contentType="com.vogella.ide.ui.todo">
       </contentAssistProcessor>
+      <contentAssistProcessor
+            class="com.vogella.ide.ui.editors.DependentTodoProcessor"
+            contentType="com.vogella.ide.ui.todo">
+      </contentAssistProcessor>
    </extension>
    <extension
          point="org.eclipse.ui.genericeditor.presentationReconcilers">
@@ -40,6 +44,13 @@
             class="com.vogella.ide.ui.editors.PropertiesReconciler"
             contentType="com.vogella.ide.ui.todo">
       </presentationReconciler>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="com.vogella.ide.ui.editors.TodoMarkerDocumentSetup"
+            contentTypeId="com.vogella.ide.ui.todo">
+      </participant>
    </extension>
 
 </plugin>
