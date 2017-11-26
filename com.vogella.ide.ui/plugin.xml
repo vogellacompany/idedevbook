@@ -34,7 +34,7 @@
             contentType="com.vogella.ide.ui.todo">
       </contentAssistProcessor>
       <contentAssistProcessor
-            class="com.vogella.ide.ui.editors.DependentTodoProcessor"
+            class="com.vogella.ide.ui.editors.DependentTodoContentAssistProcessor"
             contentType="com.vogella.ide.ui.todo">
       </contentAssistProcessor>
    </extension>
