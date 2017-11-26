@@ -44,7 +44,7 @@ public class TodoMarkerDocumentSetup implements IDocumentSetupParticipant {
 						public void run(IProgressMonitor monitor) throws CoreException {
 							String docText = event.getDocument().get();
 
-							for (String todoProperty : TodoContentAssistProcessor.PROPOSALS) {
+							for (String todoProperty : TodoPropertiesContentAssistProcessor.PROPOSALS) {
 								List<IMarker> markers = Arrays
 										.asList(adapter.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE));
 								Optional<IMarker> findAny = markers.stream()

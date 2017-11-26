@@ -12,7 +12,7 @@ import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 
-public class TodoContentAssistProcessor implements IContentAssistProcessor {
+public class TodoPropertiesContentAssistProcessor implements IContentAssistProcessor {
 
 	public static final String[] PROPOSALS = new String[] { "ID:", "Summary:", "Description:", "Done:", "Duedate:", "Dependent:" };
 
