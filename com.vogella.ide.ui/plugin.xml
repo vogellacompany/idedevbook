@@ -52,5 +52,15 @@
             contentTypeId="com.vogella.ide.ui.todo">
       </participant>
    </extension>
+   <extension
+         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+      <hyperlinkDetector
+            activate="true"
+            class="com.vogella.ide.ui.editors.hyperlink.DependentTodoHyperlinkDetector"
+            id="com.vogella.ide.ui.hyperlinkDetector1"
+            name="Dependent Todo hyperlink"
+            targetId="org.eclipse.ui.DefaultTextEditor">
+      </hyperlinkDetector>
+   </extension>
 
 </plugin>
