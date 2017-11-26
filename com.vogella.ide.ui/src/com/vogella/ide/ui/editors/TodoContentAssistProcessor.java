@@ -14,7 +14,7 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 
 public class TodoContentAssistProcessor implements IContentAssistProcessor {
 
-	private String[] proposals = new String[] { "ID:", "Summary:", "Description:", "Done:", "Duedate:", "Dependent:" };
+	public static final String[] PROPOSALS = new String[] { "ID:", "Summary:", "Description:", "Done:", "Duedate:", "Dependent:" };
 
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
@@ -36,8 +36,8 @@ public class TodoContentAssistProcessor implements IContentAssistProcessor {
 
 		List<ICompletionProposal> completionProposals = new ArrayList<ICompletionProposal>();
 
-		for (String c : proposals) {
-			// Only add proposal if it is not already present
+		for (String c : PROPOSALS) {
+			// Only add proposal in case it is not already present
 			if (!(viewer.getDocument().get().contains(c))) {
 				completionProposals.add(new CompletionProposal(c, offset, 0, c.length()));
 			}
