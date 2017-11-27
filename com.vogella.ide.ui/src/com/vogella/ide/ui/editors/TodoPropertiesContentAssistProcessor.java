@@ -1,7 +1,6 @@
 package com.vogella.ide.ui.editors;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
@@ -11,10 +10,15 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TodoPropertiesContentAssistProcessor implements IContentAssistProcessor {
 
-	public static final String[] PROPOSALS = new String[] { "ID:", "Summary:", "Description:", "Done:", "Duedate:", "Dependent:" };
+	private static final Logger logger = LoggerFactory.getLogger(TodoPropertiesContentAssistProcessor.class);
+
+	public static final String[] PROPOSALS = new String[] { "ID:", "Summary:", "Description:", "Done:", "Duedate:",
+			"Dependent:" };
 
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
@@ -25,25 +29,18 @@ public class TodoPropertiesContentAssistProcessor implements IContentAssistProce
 			int lineOfOffset = document.getLineOfOffset(offset);
 			int lineOffset = document.getLineOffset(lineOfOffset);
 
-			// do not show any content assist in case the offset is not at the
-			// beginning of a line
-			if (offset != lineOffset) {
-				return new ICompletionProposal[0];
-			}
+			int lineTextLenght = offset - lineOffset;
+			String lineStartToOffsetValue = document.get(lineOffset, lineTextLenght).toLowerCase();
+
+			return Arrays.asList(PROPOSALS).stream()
+					.filter(proposal -> !viewer.getDocument().get().contains(proposal)
+							&& proposal.toLowerCase().startsWith(lineStartToOffsetValue))
+					.map(proposal -> new CompletionProposal(proposal, lineOffset, lineTextLenght, proposal.length()))
+					.toArray(ICompletionProposal[]::new);
 		} catch (BadLocationException e) {
-			// ignore here and just continue
+			logger.error(e.getMessage(), e);
 		}
-
-		List<ICompletionProposal> completionProposals = new ArrayList<ICompletionProposal>();
-
-		for (String c : PROPOSALS) {
-			// Only add proposal in case it is not already present
-			if (!(viewer.getDocument().get().contains(c))) {
-				completionProposals.add(new CompletionProposal(c, offset, 0, c.length()));
-			}
-		}
-
-		return completionProposals.toArray(new ICompletionProposal[completionProposals.size()]);
+		return new ICompletionProposal[0];
 	}
 
 	@Override
