@@ -7,6 +7,7 @@ import com.vogella.ide.navigator.simple.model.FakeInitialInput;
 
 public class CustomNavigator extends CommonNavigator {
 
+	@Override
 	protected IAdaptable getInitialInput() {
 		return new FakeInitialInput();
 	}

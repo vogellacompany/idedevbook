@@ -11,6 +11,7 @@ public class CNFContentProvider implements ITreeContentProvider {
 	private static final Object[] EMPTY_ARRAY = new Object[0];
 	private Parent[] parents;
 
+	@Override
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof FakeInitialInput) {
 			if (parents == null) {
@@ -26,6 +27,7 @@ public class CNFContentProvider implements ITreeContentProvider {
 		}
 	}
 
+	@Override
 	public Object getParent(Object element) {
 		if (element instanceof Child) {
 			return ((Child) element).getParent();
@@ -35,14 +37,17 @@ public class CNFContentProvider implements ITreeContentProvider {
 		return null;
 	}
 
+	@Override
 	public boolean hasChildren(Object element) {
 		return (element instanceof FakeInitialInput || element instanceof Parent);
 	}
 
+	@Override
 	public Object[] getElements(Object inputElement) {
 		return getChildren(inputElement);
 	}
 
+	@Override
 	public void dispose() {
 		this.parents = null;
 	}
