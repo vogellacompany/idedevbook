@@ -52,7 +52,7 @@ public class DependentTodoHyperlinkDetector extends AbstractHyperlinkDetector {
 					String dependentResourceName = lineContent.substring(DEPENDENT_PROPERTY.length()).trim();
 
 					Region targetRegion = new Region(lineInformationOfOffset.getOffset() + DEPENDENT_PROPERTY.length(),
-							lineInformationOfOffset.getLength());
+							lineInformationOfOffset.getLength() - DEPENDENT_PROPERTY.length());
 
 					IResource[] members = parent.members();
 
