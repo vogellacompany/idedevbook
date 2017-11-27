@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.vogella.ide.outline;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: VOGELLA
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.ui;bundle-version="3.109.100",
+Require-Bundle: org.eclipse.ui;bundle-version="3.109.0",
  org.eclipse.equinox.registry,
  org.eclipse.ui.views,
  org.eclipse.text,
