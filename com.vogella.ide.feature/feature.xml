@@ -67,13 +67,6 @@
          unpack="false"/>
 
    <plugin
-         id="test"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.vogella.ide.navigator.simple"
          download-size="0"
          install-size="0"
@@ -82,6 +75,20 @@
 
    <plugin
          id="com.vogella.ide.outline"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.vogella.e4.css"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.slf4j.api"
          download-size="0"
          install-size="0"
          version="0.0.0"
