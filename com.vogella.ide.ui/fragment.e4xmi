@@ -5,5 +5,6 @@
       <tags>View</tags>
       <tags>categoryTag:Todo</tags>
     </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_Z_-gYNSOEeeZzd9oKNl5Dw" elementId="com.vogella.ide.ui.partdescriptor.playground" label="Playground" category="Todo" contributionURI="bundleclass://com.vogella.ide.ui/com.vogella.ide.ui.parts.PlaygroundPart"/>
   </fragments>
 </fragment:ModelFragments>
