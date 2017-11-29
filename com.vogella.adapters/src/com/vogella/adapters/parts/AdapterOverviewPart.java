@@ -29,6 +29,7 @@ public class AdapterOverviewPart {
 		filteredTree.getViewer().setLabelProvider(new DecoratingStyledCellLabelProvider(new WorkbenchLabelProvider(), null, null));
 
 		todoService.getTodos(todos -> {
+			// Use the ArrayRootWorkbenchAdapter as invisible root for the Tree
 			filteredTree.getViewer().setInput(new ArrayRootWorkbenchAdapter(todos));
 		});
 

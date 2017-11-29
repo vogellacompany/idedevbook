@@ -13,6 +13,7 @@ public class ArrayRootWorkbenchAdapter extends WorkbenchAdapter {
 
 	@Override
 	public Object[] getChildren(Object object) {
+		// Use ArrayContentProvider internally to work with arrays and collections
 		return ArrayContentProvider.getInstance().getElements(root);
 	}
 }
