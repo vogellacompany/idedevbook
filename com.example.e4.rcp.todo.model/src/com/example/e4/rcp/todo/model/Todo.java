@@ -4,6 +4,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Date;
 
+import org.eclipse.core.resources.IResource;
+
 public class Todo {
 
 	private PropertyChangeSupport changes = new PropertyChangeSupport(this);
@@ -13,12 +15,14 @@ public class Todo {
 	public static final String FIELD_DESCRIPTION = "description";
 	public static final String FIELD_DONE = "done";
 	public static final String FIELD_DUEDATE = "dueDate";
+	public static final String FIELD_RESOURCE = "resource";
 
 	private final long id;
 	private String summary ="" ;
 	private String description ="";
 	private boolean done = false;
 	private Date dueDate = new Date();
+	private IResource resource;
 	
 	public Todo(long i) {
 		id = i;
@@ -68,6 +72,14 @@ public class Todo {
 
 	public void setDueDate(Date dueDate) {
 		changes.firePropertyChange(FIELD_DUEDATE, this.dueDate, this.dueDate = new Date(dueDate.getTime()));
+	}
+
+	public IResource getResource() {
+		return resource;
+	}
+
+	public void setResource(IResource resource) {
+		changes.firePropertyChange(FIELD_RESOURCE, this.resource, this.resource = resource);
 	}
 
 	@Override
