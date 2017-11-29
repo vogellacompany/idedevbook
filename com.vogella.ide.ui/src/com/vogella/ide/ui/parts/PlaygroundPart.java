@@ -2,6 +2,7 @@ package com.vogella.ide.ui.parts;
 
 import javax.annotation.PostConstruct;
 
+import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
@@ -19,5 +20,7 @@ public class PlaygroundPart {
 		}));
 		
 		new ImageWithText(parent, SWT.NONE);
+		
+		GridLayoutFactory.swtDefaults().generateLayout(parent);
 	}
 }

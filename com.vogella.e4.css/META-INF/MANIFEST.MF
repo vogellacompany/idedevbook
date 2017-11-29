@@ -5,4 +5,8 @@ Bundle-SymbolicName: com.vogella.e4.css;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: VOGELLA
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.e4.ui.css.swt.theme
+Require-Bundle: org.eclipse.e4.ui.css.swt.theme,
+ org.eclipse.e4.ui.css.core;bundle-version="0.12.101",
+ org.eclipse.e4.ui.css.swt;bundle-version="0.13.1",
+ com.vogella.swt.widgets;bundle-version="1.0.0",
+ org.eclipse.swt
