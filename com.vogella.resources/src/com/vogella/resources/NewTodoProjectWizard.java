@@ -44,6 +44,7 @@ public class NewTodoProjectWizard extends Wizard implements INewWizard {
 	
 	@Override
 	public void addPages() {
+		// Reuse the WizardNewProjectCreationPage from org.eclipse.ui.ide
 		projectCreationPage = new WizardNewProjectCreationPage("New Todo Project");
 		projectCreationPage.setTitle("Create a Todo Project");
 		projectCreationPage.setDescription("Creates a general project with *.todo files.");
