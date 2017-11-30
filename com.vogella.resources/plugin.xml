@@ -14,7 +14,20 @@
       </wizard>
       <category
             id="com.vogella.resources.todo"
-            name="Todo">
+            name="Vogella">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            class="com.vogella.resources.ImportWizard1"
+            icon="icons/vogella16.jpg"
+            id="com.vogella.resources.wizard1"
+            name="Todo Project">
+      </wizard>
+      <category
+            id="com.vogella.resources.category1"
+            name="Vogella">
       </category>
    </extension>
 
