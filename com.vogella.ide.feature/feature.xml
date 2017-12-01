@@ -46,20 +46,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.vogella.rcp.contribute.parts"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.e4.tools.emf.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.edit"
          download-size="0"
          install-size="0"
@@ -110,6 +96,13 @@
 
    <plugin
          id="com.vogella.resources"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.vogella.ide.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

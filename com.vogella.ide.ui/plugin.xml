@@ -11,58 +11,6 @@
       </fragment>
    </extension>
    <extension
-         point="org.eclipse.core.contenttype.contentTypes">
-      <content-type
-            base-type="org.eclipse.core.runtime.text"
-            file-extensions="todo"
-            id="todo"
-            name="Todo"
-            priority="high">
-      </content-type>
-   </extension>
-   <extension
-         point="org.eclipse.ui.editors">
-      <editorContentTypeBinding
-            contentTypeId="com.vogella.ide.ui.todo"
-            editorId="org.eclipse.ui.genericeditor.GenericEditor">
-      </editorContentTypeBinding>
-   </extension>
-   <extension
-         point="org.eclipse.ui.genericeditor.contentAssistProcessors">
-      <contentAssistProcessor
-            class="com.vogella.ide.ui.editors.TodoPropertiesContentAssistProcessor"
-            contentType="com.vogella.ide.ui.todo">
-      </contentAssistProcessor>
-      <contentAssistProcessor
-            class="com.vogella.ide.ui.editors.DependentTodoContentAssistProcessor"
-            contentType="com.vogella.ide.ui.todo">
-      </contentAssistProcessor>
-   </extension>
-   <extension
-         point="org.eclipse.ui.genericeditor.presentationReconcilers">
-      <presentationReconciler
-            class="com.vogella.ide.ui.editors.PropertiesReconciler"
-            contentType="com.vogella.ide.ui.todo">
-      </presentationReconciler>
-   </extension>
-   <extension
-         point="org.eclipse.core.filebuffers.documentSetup">
-      <participant
-            class="com.vogella.ide.ui.editors.TodoMarkerDocumentSetup"
-            contentTypeId="com.vogella.ide.ui.todo">
-      </participant>
-   </extension>
-   <extension
-         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
-      <hyperlinkDetector
-            activate="true"
-            class="com.vogella.ide.ui.editors.hyperlink.DependentTodoHyperlinkDetector"
-            id="com.vogella.ide.ui.hyperlinkDetector1"
-            name="Dependent Todo hyperlink"
-            targetId="org.eclipse.ui.DefaultTextEditor">
-      </hyperlinkDetector>
-   </extension>
-   <extension
          id="ide"
          point="org.eclipse.core.runtime.products">
       <product
