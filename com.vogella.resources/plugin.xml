@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
 <plugin>
+
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
-            canFinishEarly="true"
+            name="Todo Project"
+            canFinishEarly="false"
+            icon="icons/vogella16.jpg"
             category="com.vogella.resources.todo"
             class="com.vogella.resources.NewTodoProjectWizard"
-            icon="icons/vogella16.jpg"
-            id="com.vogella.resources.wizard.todoproject"
-            name="Todo Project"
-            project="true">
+            project="true"
+            id="com.vogella.resources.wizard.todoproject">
       </wizard>
       <category
-            id="com.vogella.resources.todo"
-            name="Vogella">
+            name="Vogella"
+            id="com.vogella.resources.todo">
       </category>
    </extension>
    <extension
          point="org.eclipse.ui.importWizards">
       <wizard
-            class="com.vogella.resources.ImportWizard1"
+            name="Todo Project"
             icon="icons/vogella16.jpg"
-            id="com.vogella.resources.wizard1"
-            name="Todo Project">
+            class="com.vogella.resources.ImportWizard1"
+            id="com.vogella.resources.wizard1">
       </wizard>
       <category
-            id="com.vogella.resources.category1"
-            name="Vogella">
+            name="Vogella"
+            id="com.vogella.resources.category1">
       </category>
+   </extension>
+   <extension
+         id="com.vogella.resources.fragment"
+         point="org.eclipse.e4.workbench.model">
+      <fragment
+            uri="fragment.e4xmi">
+      </fragment>
    </extension>
 
 </plugin>
