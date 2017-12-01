@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_BxaXACerEeWxCPrV0pAZQQ">
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_BxaXACerEeWxCPrV0pAZQQ">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EI7oACerEeWxCPrV0pAZQQ" featurename="descriptors" parentElementId="xpath:/">
     <elements xsi:type="basic:PartDescriptor" xmi:id="_KMklcCerEeWxCPrV0pAZQQ" elementId="test.partDescFragment.ASampleE4View" label="Todo Overview" iconURI="platform:/plugin/com.vogella.ide.ui/icons/Sample.png" tooltip="" category="Todo" contributionURI="bundleclass://com.vogella.ide.ui/com.vogella.ide.ui.parts.TodoOverview">
       <tags>View</tags>
       <tags>categoryTag:Todo</tags>
     </elements>
     <elements xsi:type="basic:PartDescriptor" xmi:id="_Z_-gYNSOEeeZzd9oKNl5Dw" elementId="com.vogella.ide.ui.partdescriptor.playground" label="Playground" category="Todo" contributionURI="bundleclass://com.vogella.ide.ui/com.vogella.ide.ui.parts.PlaygroundPart"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_6DPfcNZ5EeeHc-67idg0YQ" featurename="menuContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_-ai24NZ5EeeHc-67idg0YQ" elementId="com.vogella.ide.ui.menucontribution.0" parentId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="__hkwYNZ5EeeHc-67idg0YQ" elementId="com.vogella.ide.ui.handledmenuitem.0"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_AJ6iwNZ6EeeHc-67idg0YQ" featurename="commands" parentElementId="xpath:/">
+    <elements xsi:type="commands:Command" xmi:id="_EDxJMNZ6EeeHc-67idg0YQ" elementId="com.vogella.ide.ui.command.addmarker" commandName="Add Marker"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_CFpPoNZ6EeeHc-67idg0YQ" featurename="handlers" parentElementId="xpath:/">
+    <elements xsi:type="commands:Handler" xmi:id="_E3XwYNZ6EeeHc-67idg0YQ" elementId="com.vogella.ide.ui.handler.0" contributionURI="bundleclass://com.vogella.ide.ui/com.vogella.ide.ui.handler.AddMarkerHandler" command="_EDxJMNZ6EeeHc-67idg0YQ"/>
   </fragments>
 </fragment:ModelFragments>
