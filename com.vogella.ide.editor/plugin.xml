@@ -54,7 +54,7 @@
          point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
       <hyperlinkDetector
          activate="true"
-         class="com.vogella.ide.ui.editors.hyperlink.DependentTodoHyperlinkDetector"
+         class="com.vogella.ide.editor.hyperlink.DependentTodoHyperlinkDetector"
          id="com.vogella.ide.ui.hyperlinkDetector"
          name="Dependent Todo Hyperlink"
          targetId="org.eclipse.ui.DefaultTextEditor">
