@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.vogella.ide.editor.TodoTextEditor"
+            default="false"
+            extensions="task"
+            icon="icons/vogella16.jpg"
+            id="com.vogella.ide.editor.todo"
+            name="Todo Editor">
+      </editor>
+      <editorContentTypeBinding
+            contentTypeId="com.vogella.ide.editor.todo"
+            editorId="org.eclipse.ui.genericeditor.GenericEditor">
+      </editorContentTypeBinding>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            file-extensions="todo"
+            id="todo"
+            name="Todo"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.genericeditor.contentAssistProcessors">
+      <contentAssistProcessor
+            class="com.vogella.ide.editor.contentassist.TodoPropertiesContentAssistProcessor"
+            contentType="com.vogella.ide.editor.todo">
+      </contentAssistProcessor>
+      <contentAssistProcessor
+            class="com.vogella.ide.editor.contentassist.DependentTodoContentAssistProcessor"
+            contentType="com.vogella.ide.editor.todo">
+      </contentAssistProcessor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.genericeditor.presentationReconcilers">
+      <presentationReconciler
+            class="com.vogella.ide.editor.presentation.PropertiesReconciler"
+            contentType="com.vogella.ide.editor.todo">
+      </presentationReconciler>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="com.vogella.ide.editor.documentsetup.TodoMarkerDocumentSetup"
+            contentTypeId="com.vogella.ide.editor.todo">
+      </participant>
+   </extension>
+   <extension
+         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+      <hyperlinkDetector
+         activate="true"
+         class="com.vogella.ide.ui.editors.hyperlink.DependentTodoHyperlinkDetector"
+         id="com.vogella.ide.ui.hyperlinkDetector"
+         name="Dependent Todo Hyperlink"
+         targetId="org.eclipse.ui.DefaultTextEditor">
+      </hyperlinkDetector>
+   </extension>
+
+</plugin>
