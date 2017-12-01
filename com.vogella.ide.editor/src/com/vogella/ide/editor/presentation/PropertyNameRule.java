@@ -16,15 +16,27 @@ public class PropertyNameRule implements IRule {
 	@Override
 	public IToken evaluate(ICharacterScanner scanner) {
 		int c = scanner.read();
-		if (c != ICharacterScanner.EOF) {
-			do {
-				// read until the a EOF or colon is reached
-				c = scanner.read();
-			} while (c != ICharacterScanner.EOF && c != ':');
-			if (c == ':')
+		int count = 1;
+
+		while (c != ICharacterScanner.EOF) {
+
+			if (c == ':') {
 				return token;
+			}
+
+			if ('\n' == c || '\r' == c) {
+				break;
+			}
+
+			count++;
+			c = scanner.read();
 		}
-		scanner.unread();
+
+		// put the scanner back to the original position if no match
+		for (int i = 0; i < count; i++) {
+			scanner.unread();
+		}
+
 		return Token.UNDEFINED;
 	}
 }
